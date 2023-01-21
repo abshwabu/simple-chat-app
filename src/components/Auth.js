@@ -5,7 +5,7 @@ import {signInWithPopup} from 'firebase/auth';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-function Auth({props}) {
+function Auth(props) {
     const {setIsAuth} = props;
     const signin = async ()=>{
       try {
