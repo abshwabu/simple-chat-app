@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { addDoc,collection,onSnapshot,query,serverTimestamp, where } from 'firebase/firestore'
+import { addDoc,collection,onSnapshot,orderBy,query,serverTimestamp, where } from 'firebase/firestore'
 import { auth, db } from '../firebase'
 import '../styles/Chat.css'
 
@@ -10,7 +10,7 @@ function Chat(props) {
     const [messages,setMessages] = useState([])
 
     useEffect(()=>{
-        const queryRef = query(messagesRef,where('room','==',room))
+        const queryRef = query(messagesRef,where('room','==',room),orderBy('createdAt'))
         const unsuscribe = onSnapshot(queryRef,(snapShot)=>{
             let messages = [];
             snapShot.forEach((doc)=>{
@@ -33,6 +33,7 @@ function Chat(props) {
         setNewMessage('')
     }
   return (
+    
     <div className='chat-app'>
         <div className="header">
             <h1>Welcome to: {room.toUpperCase()} </h1>
