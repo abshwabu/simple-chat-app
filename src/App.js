@@ -1,6 +1,7 @@
 
 import './App.css';
 import Auth from './components/Auth';
+import Chat from './components/Chat'
 
 import Cookies from 'universal-cookie';
 import { useState } from 'react';
@@ -24,7 +25,7 @@ function App() {
      <div>
       {
         room ? (
-        <div>chat</div>
+        <Chat room={room}/>
         ):(
           <div className="room">
             <label htmlFor="room">Enter room name: </label>
